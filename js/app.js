@@ -1,0 +1,1 @@
+document.querySelectorAll('.card,.step').forEach(e=>e.onmouseenter=()=>e.style.transform='translateY(-8px)');document.querySelectorAll('.card,.step').forEach(e=>e.onmouseleave=()=>e.style.transform='translateY(0)');
