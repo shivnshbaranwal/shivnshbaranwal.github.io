@@ -1,0 +1,1 @@
+const c=document.querySelector('.cursor');window.addEventListener('mousemove',e=>{c.style.left=e.clientX-9+'px';c.style.top=e.clientY-9+'px';});
