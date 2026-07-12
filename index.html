@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivansh Baranwal | Data Analyst</title>
+<meta name="description" content="Shivansh Baranwal — Data Analyst skilled in SQL, Python, Power BI and LLM-powered automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E11;
+    --bg-raised:#10141A;
+    --grid:#1A1E24;
+    --text:#EDEEF0;
+    --text-dim:#8B93A1;
+    --text-faint:#5C636E;
+    --accent:#4F9D69;
+    --accent-dim:#356B47;
+    --accent-glow: rgba(79,157,105,0.15);
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-attachment: fixed;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--accent); color:var(--bg);}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- top bar ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(10px);
+    background: rgba(11,14,17,0.85);
+    border-bottom:1px solid var(--grid);
+  }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:920px; margin:0 auto;
+    font-family:var(--mono); font-size:13px;
+  }
+  .topbar .path{color:var(--text-dim);}
+  .topbar .path .sep{color:var(--text-faint); margin:0 2px;}
+  .topbar .path .file{color:var(--accent);}
+  nav{display:flex; gap:20px;}
+  nav a{color:var(--text-dim); transition:color .15s;}
+  nav a:hover{color:var(--accent);}
+  .clock{color:var(--text-faint); font-variant-numeric: tabular-nums;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:80px 0 56px;
+    border-bottom:1px solid var(--grid);
+  }
+  .db-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:12px; color:var(--accent);
+    background:var(--accent-glow);
+    border:1px solid var(--accent-dim);
+    padding:5px 12px; border-radius:3px;
+    margin-bottom:28px;
+  }
+  .db-tag .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent);}
+  .hero-grid{display:flex; align-items:center; gap:40px; flex-wrap:wrap;}
+  .hero-photo{
+    width:104px; height:104px; border-radius:8px;
+    background: linear-gradient(135deg, var(--accent-dim), var(--bg-raised));
+    border:1px solid var(--grid);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:32px; font-weight:700; color:var(--accent);
+    flex-shrink:0;
+  }
+  h1{
+    font-family:var(--mono);
+    font-size:clamp(32px, 5vw, 48px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    margin-bottom:8px;
+  }
+  .role{
+    font-size:17px; color:var(--text-dim);
+    margin-bottom:20px;
+  }
+  .role .loc{color:var(--text-faint);}
+  .hero-links{display:flex; flex-wrap:wrap; gap:10px;}
+  .hero-links a{
+    font-family:var(--mono); font-size:13px;
+    padding:8px 14px; border:1px solid var(--grid); border-radius:4px;
+    color:var(--text-dim);
+    transition: all .15s;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .hero-links a:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-glow);}
+  .hero-links a.primary{
+    background:var(--accent); color:var(--bg); border-color:var(--accent); font-weight:600;
+  }
+  .hero-links a.primary:hover{background:var(--accent-dim); color:var(--text);}
+
+  /* ---------- metrics strip (signature element) ---------- */
+  .metrics{
+    display:grid; grid-template-columns:repeat(4, 1fr);
+    border-bottom:1px solid var(--grid);
+  }
+  .metric{
+    padding:24px; border-right:1px solid var(--grid);
+    font-family:var(--mono);
+  }
+  .metric:last-child{border-right:none;}
+  .metric .val{font-size:26px; font-weight:700; color:var(--accent);}
+  .metric .label{font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; margin-top:4px;}
+  @media (max-width:700px){
+    .metrics{grid-template-columns:repeat(2,1fr);}
+    .metric{border-bottom:1px solid var(--grid);}
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--grid);}
+  .sec-head{
+    font-family:var(--mono); font-size:13px; color:var(--text-faint);
+    margin-bottom:32px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sec-head::before{content:'--'; color:var(--accent-dim);}
+  .sec-head .n{color:var(--accent);}
+
+  /* ---------- about ---------- */
+  .about-text{font-size:16px; color:var(--text-dim); max-width:640px;}
+  .about-text strong{color:var(--text); font-weight:600;}
+
+  /* ---------- experience ---------- */
+  .job{
+    padding:24px 0; border-top:1px solid var(--grid);
+  }
+  .job:first-child{border-top:none; padding-top:0;}
+  .job-head{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    margin-bottom:12px;
+  }
+  .job-title{font-family:var(--mono); font-size:16px; font-weight:600;}
+  .job-title .at{color:var(--text-faint); font-weight:400;}
+  .job-title .co{color:var(--accent);}
+  .job-date{font-family:var(--mono); font-size:12px; color:var(--text-faint); white-space:nowrap;}
+  .job ul{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .job li{
+    position:relative; padding-left:20px; color:var(--text-dim); font-size:14.5px;
+  }
+  .job li::before{content:'▸'; position:absolute; left:0; color:var(--accent-dim);}
+
+  /* ---------- projects ---------- */
+  .projects{display:flex; flex-direction:column; gap:16px;}
+  .proj{
+    border:1px solid var(--grid); border-radius:6px;
+    padding:24px;
+    background:var(--bg-raised);
+    transition: border-color .15s, transform .15s;
+  }
+  .proj:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+  .proj-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:6px; flex-wrap:wrap;}
+  .proj-title{font-family:var(--mono); font-size:16px; font-weight:600;}
+  .proj-date{font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase;}
+  .proj p{color:var(--text-dim); font-size:14.5px; margin:10px 0 14px;}
+  .stack{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .chip{
+    font-family:var(--mono); font-size:11px; color:var(--accent);
+    background:var(--accent-glow); border:1px solid var(--accent-dim);
+    padding:3px 9px; border-radius:3px;
+  }
+  .proj-links{display:flex; gap:14px;}
+  .proj-links a{font-family:var(--mono); font-size:12.5px; color:var(--text-dim); border-bottom:1px solid var(--grid);}
+  .proj-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  /* ---------- skills ---------- */
+  .skill-groups{display:flex; flex-direction:column; gap:22px;}
+  .skill-group-label{font-family:var(--mono); font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;}
+  .skill-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-pill{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    border:1px solid var(--grid); padding:6px 12px; border-radius:20px;
+    transition: all .15s; cursor:default;
+  }
+  .skill-pill:hover{border-color:var(--accent); color:var(--accent); background:var(--accent-glow);}
+
+  /* ---------- education / certs ---------- */
+  .edu-item, .cert-item{
+    padding:14px 0; border-top:1px solid var(--grid);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+  }
+  .edu-item:first-child, .cert-item:first-child{border-top:none;}
+  .edu-name{font-weight:600; font-size:14.5px;}
+  .edu-sub{color:var(--text-faint); font-size:13px;}
+  .edu-date{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  @media (max-width:700px){.two-col{grid-template-columns:1fr;}}
+
+  /* ---------- footer ---------- */
+  footer{padding:40px 0; text-align:center;}
+  footer p{font-family:var(--mono); font-size:12px; color:var(--text-faint);}
+  footer a{color:var(--accent);}
+
+  /* fade-in on scroll */
+  .reveal{opacity:0; transform:translateY(16px); transition: opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="path">~<span class="sep">/</span>shivansh-baranwal<span class="sep">/</span><span class="file">portfolio</span></div>
+    <nav>
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+    </nav>
+    <div class="clock" id="clock">··:··:··</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:none; padding-bottom:0;">
+    <div class="db-tag"><span class="dot"></span>OPEN TO WORK</div>
+    <div class="hero-grid">
+      <div class="hero-photo">SB</div>
+      <div>
+        <h1>Shivansh Baranwal</h1>
+        <div class="role">Data Analyst &amp; AI Automation <span class="loc">· New Delhi, IN</span></div>
+        <div class="hero-links">
+          <a href="resume.pdf" target="_blank" class="primary">Resume ↗</a>
+          <a href="https://github.com/shivnshbaranwal" target="_blank">github.com/shivnshbaranwal</a>
+          <a href="https://linkedin.com/in/shivansh-baranwal" target="_blank">linkedin.com/in/shivansh-baranwal</a>
+          <a href="mailto:bshivnsh@gmail.com">bshivnsh@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="metrics" style="padding:0; margin-top:48px;">
+    <div class="metric"><div class="val">50K+</div><div class="label">Records cleaned</div></div>
+    <div class="metric"><div class="val">122M+</div><div class="label">Sales analyzed</div></div>
+    <div class="metric"><div class="val">85%</div><div class="label">Forecast accuracy</div></div>
+    <div class="metric"><div class="val">40%</div><div class="label">Effort reduced</div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="sec-head"><span class="n">01</span> about</div>
+    <p class="about-text">
+      I'm a <strong>Data Analyst</strong> who turns messy datasets into decisions. My toolkit spans
+      <strong>SQL, Python, and Power BI</strong> for extraction, cleaning, EDA, and dashboarding — and lately
+      I've been wiring <strong>LLMs (Gemini API)</strong> into the workflow itself, building automation pipelines
+      that don't just report on data but act on it. Currently a Data Analyst Intern at
+      <strong>Airkrit India (Edulyt India)</strong>, where I work across 50,000+ record datasets to keep business
+      reporting fast and reliable.
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal">
+    <div class="sec-head"><span class="n">02</span> experience</div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="job-title">Data Analyst Intern <span class="at">·</span> <span class="co">Airkrit India (Edulyt India)</span></div>
+        <div class="job-date">Jun 2026 — Present · New Delhi, IN</div>
+      </div>
+      <ul>
+        <li>Cleaned, transformed, and validated 50,000+ records using SQL and Python, improving data quality for business reporting.</li>
+        <li>Built 5+ interactive Power BI dashboards to track KPIs, automate reporting, and support data-driven decision making.</li>
+        <li>Performed EDA using Python (Pandas, NumPy) to identify trends, anomalies, and actionable insights.</li>
+        <li>Optimized SQL queries and automated data preprocessing, reducing report generation time by 30% and manual effort by 40%.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
+    <div class="sec-head"><span class="n">03</span> projects</div>
+    <div class="projects">
+
+      <div class="proj">
+        <div class="proj-head">
+          <div class="proj-title">Sales Performance Analysis Dashboard</div>
+        </div>
+        <p>End-to-end analytics solution extracting, cleaning, and transforming sales data before modeling it in Power BI. Evaluated $122M+ in sales, $12.2M+ in profit, 7.1K+ units sold, and 3.5K+ customer orders — surfacing key product, promotion, and regional trends across 20+ visualizations and 15+ DAX measures.</p>
+        <div class="stack">
+          <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Power BI</span><span class="chip">Power Query</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/shivnshbaranwal" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <div class="proj-title">Automated AI Job Ingestion &amp; Personalization Pipeline</div>
+        </div>
+        <p>Automated ETL pipeline built in n8n to aggregate global job market data via the Adzuna API, with custom loop structures and wait nodes to respect strict rate limits. Integrated Gemini LLM to parse job descriptions and auto-generate tailored resumes and cover letters, with a dedup layer logging finalized assets to Google Sheets.</p>
+        <div class="stack">
+          <span class="chip">n8n</span><span class="chip">Python</span><span class="chip">Gemini API</span><span class="chip">Adzuna API</span><span class="chip">Google Sheets</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/shivnshbaranwal" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <div class="proj-title">Stock Market Analysis &amp; Forecasting System</div>
+        </div>
+        <p>Predictive time-series models using ARIMA and LSTM architectures, forecasting stock price trends with 85% accuracy. Optimized data extraction across Snowflake, cutting latency by 20%, and shipped Power BI dashboards consolidating 15+ financial metrics — reducing portfolio trend analysis time by 40%.</p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Snowflake</span><span class="chip">ARIMA</span><span class="chip">LSTM</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/shivnshbaranwal" target="_blank">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <div class="sec-head"><span class="n">04</span> skills</div>
+    <div class="skill-groups">
+      <div>
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-row">
+          <span class="skill-pill">SQL</span><span class="skill-pill">Python</span><span class="skill-pill">Java</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Libraries &amp; Frameworks</div>
+        <div class="skill-row">
+          <span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">ARIMA</span><span class="skill-pill">LSTM</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Data &amp; Analytics</div>
+        <div class="skill-row">
+          <span class="skill-pill">EDA</span><span class="skill-pill">Data Cleaning</span><span class="skill-pill">Data Visualization</span><span class="skill-pill">Statistical Modeling</span><span class="skill-pill">ETL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">AI / Automation</div>
+        <div class="skill-row">
+          <span class="skill-pill">LLM Integration</span><span class="skill-pill">Gemini API</span><span class="skill-pill">Prompt Engineering</span><span class="skill-pill">n8n</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Tools &amp; Platforms</div>
+        <div class="skill-row">
+          <span class="skill-pill">Power BI</span><span class="skill-pill">Snowflake</span><span class="skill-pill">Advanced Excel</span><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">PyCharm</span><span class="skill-pill">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + CERTS -->
+  <section id="education" class="reveal">
+    <div class="sec-head"><span class="n">05</span> education &amp; certifications</div>
+    <div class="two-col">
+      <div>
+        <div class="skill-group-label" style="margin-bottom:14px;">Education</div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">KIET Group of Institutions</div>
+            <div class="edu-sub">B.Tech, Electronics &amp; Communication · Ghaziabad, UP</div>
+          </div>
+          <div class="edu-date">Exp. Jun 2027</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">Saint Dominic Savio College</div>
+            <div class="edu-sub">Class 12th (ICSE) · 79% · Lucknow, UP</div>
+          </div>
+          <div class="edu-date">2022</div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <div class="edu-name">Saint Dominic Savio College</div>
+            <div class="edu-sub">Class 10th (ICSE) · 87.5% · Lucknow, UP</div>
+          </div>
+          <div class="edu-date">2020</div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label" style="margin-bottom:14px;">Certifications &amp; Achievements</div>
+        <div class="cert-item">
+          <div class="edu-name">Smart India Hackathon 2025</div>
+          <div class="edu-date">Dept. Level</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-name">AWS Certified Cloud Practitioner</div>
+        </div>
+        <div class="cert-item">
+          <div class="edu-name">Data Analytics Certification</div>
+          <div class="edu-sub">Krish Naik · Udemy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&lt;<a href="mailto:bshivnsh@gmail.com">bshivnsh@gmail.com</a>&gt; · © 2026 Shivansh Baranwal · New Delhi, IN</p>
+</footer>
+
+<script>
+  // live IST clock
+  function updateClock(){
+    const el = document.getElementById('clock');
+    const now = new Date();
+    const opts = { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    el.textContent = now.toLocaleTimeString('en-GB', opts);
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
