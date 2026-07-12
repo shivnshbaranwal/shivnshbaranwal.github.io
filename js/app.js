@@ -1,0 +1,1 @@
+window.addEventListener('load',()=>setTimeout(()=>loader.remove(),900));
